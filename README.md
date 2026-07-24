@@ -1,6 +1,6 @@
 # Neural Network From Scratch (NumPy)
 
-A small, readable deep-learning library built from the ground up in **pure NumPy** —
+A small, readable deep-learning library built from the ground up in **pure NumPy** -->
 no PyTorch, no TensorFlow, no autograd. Layers, activations, losses, optimizers,
 and **backpropagation** are all implemented by hand, and the gradients are
 **verified correct with numerical gradient checking**.
