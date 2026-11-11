@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# MNIST is downloaded on first run
+data/mnist/
+
+.DS_Store
+.idea/
+.vscode/

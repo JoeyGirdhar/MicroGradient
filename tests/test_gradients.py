@@ -1,27 +1,12 @@
-"""
-Gradient checking -- the test that proves the backprop math is actually correct.
+"""Numerical gradient checks for the backward passes.
 
-The idea: for a scalar loss L and a parameter p, calculus gives us an *analytic*
-gradient dL/dp from our backward() code. We can also estimate it *numerically*
-with the central-difference formula:
-
-    dL/dp  ~=  ( L(p + eps) - L(p - eps) ) / (2 * eps)
-
-If our backward() is right, the two agree to ~7 decimal places. If someone
-fat-fingers a transpose or a sign, this test screams. This is the single most
-important habit when writing gradients by hand, and it's why this project can
-claim to be correct rather than just "seems to train."
-
-Run directly:   python tests/test_gradients.py
-Or with pytest:  pytest -q
-"""
+Run with pytest, or directly: python tests/test_gradients.py"""
 
 import os
 import sys
 
 import numpy as np
 
-# Make the project root importable whether run via pytest or directly.
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from nn import Sequential, Dense, ReLU, Tanh, SoftmaxCrossEntropy, MSE
@@ -47,7 +32,7 @@ def _numeric_param_grads(model, loss_fn, x, y, eps=1e-5):
             p[idx] = original - eps
             loss_minus = loss_fn.forward(model.forward(x), y)
 
-            p[idx] = original  # restore
+            p[idx] = original
             g[idx] = (loss_plus - loss_minus) / (2 * eps)
             it.iternext()
         numeric.append(g)

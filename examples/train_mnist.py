@@ -1,17 +1,6 @@
-"""
-Optional benchmark: handwritten-digit classification on MNIST.
+"""Train an MLP on MNIST. Downloads the data on first run.
 
-This is the recognizable "does it actually work on real data?" test. The same
-library, scaled up to 784 inputs and 10 classes, reaches ~97-98% test accuracy
-with a couple of hidden layers and mini-batch training -- competitive with what
-you'd get from a framework, but every line is in this repo.
-
-First run downloads MNIST (~11 MB, cached in data/mnist/). Needs a network
-connection once; fully offline afterwards. Training is CPU-only and takes a
-couple of minutes.
-
-Run:  python examples/train_mnist.py
-"""
+Usage: python examples/train_mnist.py"""
 
 import os
 import sys

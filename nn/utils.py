@@ -1,4 +1,4 @@
-"""Small training helpers: accuracy, mini-batches, splits, standardization."""
+"""Training helpers."""
 
 import numpy as np
 

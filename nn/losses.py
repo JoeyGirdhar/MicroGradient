@@ -1,12 +1,4 @@
-"""
-Loss functions. Each computes a scalar loss in forward() and, in backward(),
-the gradient of that loss w.r.t. the network's *output* -- the seed gradient
-that gets fed back through the layers.
-
-SoftmaxCrossEntropy fuses the softmax and the cross-entropy on purpose: the
-combined gradient simplifies to the famous, numerically-stable expression
-(probs - one_hot) / N. Doing them separately is both slower and flakier.
-"""
+"""Loss functions. backward() returns the gradient w.r.t. the network output."""
 
 import numpy as np
 
@@ -28,7 +20,7 @@ class SoftmaxCrossEntropy:
     def backward(self):
         n = self.probs.shape[0]
         grad = self.probs.copy()
-        grad[np.arange(n), self.y] -= 1.0  # subtract 1 from the true-class prob
+        grad[np.arange(n), self.y] -= 1.0
         grad /= n
         return grad
 

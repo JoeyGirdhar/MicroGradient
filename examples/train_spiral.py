@@ -1,15 +1,6 @@
-"""
-Flagship demo: classify the spiral dataset and visualize the decision boundary.
+"""Train a classifier on the spiral dataset and plot the decision boundary.
 
-Why the spiral? Because it is NOT linearly separable. A single linear layer
-(logistic regression) can only draw straight boundaries and tops out around
-~50% accuracy here. Add one hidden layer with a ReLU and the same training loop
-bends the boundary into spirals and reaches ~99%. Seeing that jump is the
-clearest one-picture explanation of "why depth / nonlinearity matters."
-
-Run:  python examples/train_spiral.py
-Output: prints training progress and saves assets/spiral_decision_boundary.png
-"""
+Usage: python examples/train_spiral.py"""
 
 import os
 import sys
@@ -24,7 +15,6 @@ from data import make_spiral
 
 
 def build_model():
-    # 2 inputs (x, y coords) -> 64 -> 64 -> 3 class logits.
     return Sequential([
         Dense(2, 64, seed=1), ReLU(),
         Dense(64, 64, seed=2), ReLU(),
@@ -48,7 +38,7 @@ def train(model, x, y, epochs=1000, lr=0.05, verbose=True):
 def plot_decision_boundary(model, x, y, out_path):
     try:
         import matplotlib
-        matplotlib.use("Agg")  # headless: save to file without a display
+        matplotlib.use("Agg")
         import matplotlib.pyplot as plt
     except ImportError:
         print("matplotlib not installed; skipping plot. `pip install matplotlib` to enable.")

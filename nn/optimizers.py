@@ -1,13 +1,4 @@
-"""
-Optimizers: given the parameters and their gradients, take one step downhill.
-
-All three update parameters *in place* (param -= ...), so the network keeps
-using the same array objects it was built with.
-
-    SGD       plain gradient descent
-    Momentum  SGD + velocity, rolls through small bumps and speeds up
-    Adam      per-parameter adaptive learning rates; the sensible default
-"""
+"""SGD, momentum and Adam. Parameters are updated in place."""
 
 import numpy as np
 
@@ -42,8 +33,8 @@ class Adam:
         self.beta1 = beta1
         self.beta2 = beta2
         self.eps = eps
-        self.m = None  # 1st moment (mean of gradients)
-        self.v = None  # 2nd moment (mean of squared gradients)
+        self.m = None
+        self.v = None
         self.t = 0
 
     def step(self, params, grads):

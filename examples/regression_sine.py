@@ -1,11 +1,6 @@
-"""
-Regression demo: fit y = sin(x) with the same library, swapping the loss.
+"""Fit sin(x) with a small tanh network.
 
-Shows the toolkit isn't classification-only. Same layers, but a Tanh network and
-mean squared error let it trace a smooth curve. Saves a plot of the fit.
-
-Run:  python examples/regression_sine.py
-"""
+Usage: python examples/regression_sine.py"""
 
 import os
 import sys

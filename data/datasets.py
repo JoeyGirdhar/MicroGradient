@@ -1,14 +1,4 @@
-"""
-Datasets.
-
-`make_spiral` and `make_moons` are generated in pure NumPy -- no downloads, no
-dependencies -- so the main demos run instantly and offline. They are also
-*deliberately* not linearly separable, which is the whole point: a linear model
-fails on them, and a small neural net succeeds. That contrast is the lesson.
-
-`load_mnist` is optional and downloads the classic handwritten-digit dataset the
-first time it runs (cached afterwards). Only the MNIST demo needs it.
-"""
+"""Toy datasets (spiral, moons) and an MNIST loader."""
 
 import gzip
 import os
@@ -48,9 +38,7 @@ def make_moons(n_samples=400, noise=0.15, seed=0):
     return x, y
 
 
-# ---------------------------------------------------------------------------
-# Optional: MNIST (only imported/used by examples/train_mnist.py)
-# ---------------------------------------------------------------------------
+# MNIST
 
 _MNIST_BASE = "https://storage.googleapis.com/cvdf-datasets/mnist/"
 _MNIST_FILES = {

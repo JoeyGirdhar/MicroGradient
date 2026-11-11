@@ -1,14 +1,4 @@
-"""
-Activation functions, implemented as layers.
-
-Each activation is a tiny "layer" with a forward and a backward pass, so it
-plugs into the same Sequential container as the Dense layer. That symmetry is
-the whole trick behind backprop: every piece only needs to know how to
-(1) transform its input going forward, and (2) turn a gradient of the loss
-w.r.t. its *output* into a gradient w.r.t. its *input*.
-
-None of these have trainable parameters, so params()/grads() return empty lists.
-"""
+"""Activation layers."""
 
 import numpy as np
 
@@ -17,7 +7,6 @@ class ReLU:
     """f(x) = max(0, x). The workhorse nonlinearity for hidden layers."""
 
     def forward(self, x):
-        # Cache which entries were positive; the gradient only flows through those.
         self.mask = x > 0
         return x * self.mask
 
